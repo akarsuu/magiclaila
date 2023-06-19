@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update</title>
+	<style>
+	    body{
+	        background: linear-gradient(to right, #DAD2D5, #DAD2D5,#ECE2D3, #ECE2D3);
+	        height: 100%;
+            font-family: 'Roboto Flex', sans-serif;  
+            font-size: 13px;
+            font-weight: 400;
+            color:#3c081d;
+            line-height:25px;
+            overflow: -moz-scrollbars-none;
+	    }
+	    
+	    #formContainer{
+	        margin:auto;
+	        padding:auto;
+	        display:flex;
+	        flex-direction:column;
+	        width:80%;
+	        background-color:none;
+	        
+	    }
+	</style>
+
+</head>
+<body>
+	
+	<div id="formContainer">
+		<h1>Update Recipes</h1>
+		<form action="/update/{{item_to_update.id}}" method="POST" enctype="multipart/form-data">
+		    <h3>Nom de la recette</h3>
+			<input type="text" placeholder="Name" name="name" value="{{item_to_update.name}}">
+			<input type="text" placeholder="NameEng" name="nameEng" value="{{item_to_update.nameEng}}">
+
+			<br><br>
+			<h3>Photos/Images</h3>
+			<br>
+			<input type="file" placeholder="img1" name="image1">
+			
+			<input type="file" placeholder="img2" name="image2">
+			
+			<input type="file" placeholder="img3" name="image3">
+			
+			<input type="file" placeholder="img4" name="image4">
+			
+			<input type="file" placeholder="img5" name="image5">
+			
+			<input type="file" placeholder="img6" name="image6">
+			
+			<input type="file" placeholder="img7" name="image7">
+			
+			<input type="file" placeholder="img8" name="image8">
+			
+			<input type="file" placeholder="img9" name="image9">
+			
+			<input type="file" placeholder="img10" name="image10">
+			
+			<br><br>
+			<h3>Paragraphes</h3>
+			<br>
+			Poème<br>
+			<textarea placeholder="p1" name="p1">{{item_to_update.p1}}</textarea>
+		    <textarea placeholder="p1Eng" name="p1Eng">{{item_to_update.p1Eng}}</textarea>
+			<br><br>
+			Ingrédients<br>
+			<textarea placeholder="p2" name="p2" >{{item_to_update.p2}}</textarea>
+			<textarea placeholder="p2Eng" name="p2Eng">{{item_to_update.p2Eng}}</textarea>
+			<br><br>
+			Etapes de la prép.<br>
+			<textarea placeholder="p3" name="p3"> {{item_to_update.p3}}> </textarea>
+			<textarea placeholder="p3Eng" name="p3Eng">{{item_to_update.p3Eng}}</textarea> 
+
+			<br><br>
+			Titre optionnel<br>
+			<textarea placeholder="p4" name="p4">{{item_to_update.p4}}</textarea>
+			<textarea placeholder="p4Eng" name="p4Eng">{{item_to_update.p4Eng}}</textarea>
+			<br><br>
+			Contenu optionnel<br>
+			<textarea placeholder="p5" name="p5">{{item_to_update.p5}}</textarea>
+			<textarea placeholder="p5Eng" name="p5Eng">{{item_to_update.p5Eng}}</textarea>
+			<br><br>
+			<!--
+			<textarea placeholder="p6" name="p6">{{item_to_update.p6}}</textarea>
+			<textarea placeholder="p6Eng" name="p6Eng">{{item_to_update.p6Eng}}</textarea>
+			<br><br>
+			<textarea placeholder="p7" name="p7">{{item_to_update.p7}}</textarea>
+			<textarea placeholder="p7Eng" name="p7Eng">{{item_to_update.p7Eng}}</textarea>
+			<br><br>
+			<textarea placeholder="p8" name="p8">{{item_to_update.p8}}</textarea>
+			<textarea placeholder="p8Eng" name="p8Eng">{{item_to_update.p8Eng}}</textarea>
+			<br><br>
+			<textarea placeholder="p9" name="p9">{{item_to_update.p9}}</textarea>
+			<textarea placeholder="p9Eng" name="p9Eng">{{item_to_update.p9Eng}}</textarea>
+			<br><br>
+			<textarea placeholder="p10" name="p10">{{item_to_update.p10}}</textarea>
+			-->
+			Vid HTML<br>
+			<textarea placeholder="p10Eng" name="p10Eng">{{item_to_update.p10Eng}}</textarea>
+			<br><br>
+			
+			<h3>Attributs annexes</h3>
+			<h4>A partir de la pas d'accents ni de majuscules</h4>
+			
+			<input type="text" placeholder="Meal" name="meal" value="{{item_to_update.meal}}">
+		    <input type="text" placeholder="MealEng" name="mealEng" value="{{item_to_update.mealEng}}">
+
+			<br><br>
+			<input type="text" placeholder="Energy1" name="energy1" value="{{item_to_update.energy1}}">
+			<input type="text" placeholder="Energy1Eng" name="energy1Eng" value="{{item_to_update.energy1Eng}}">
+
+			<input type="text" placeholder="Energy2" name="energy2" value="{{item_to_update.energy2}}">
+			<input type="text" placeholder="Energy2Eng" name="energy2Eng" value="{{item_to_update.energy2Eng}}">
+
+			<input type="text" placeholder="Energy3" name="energy3" value="{{item_to_update.energy3}}">
+			<input type="text" placeholder="Energy3Eng" name="energy3Eng" value="{{item_to_update.energy3Eng}}">
+			<br><br>
+			<input type="text" placeholder="Sit1" name="sit1" value="{{item_to_update.sit1}}">
+			<input type="text" placeholder="Sit1Eng" name="sit1Eng" value="{{item_to_update.sit1Eng}}">
+
+			<input type="text" placeholder="Sit2" name="sit2" value="{{item_to_update.sit2}}">
+			<input type="text" placeholder="Sit2Eng" name="sit2Eng" value="{{item_to_update.sit2Eng}}">
+
+			<input type="text" placeholder="Sit3" name="sit3" value="{{item_to_update.sit3}}">
+			<input type="text" placeholder="Sit3Eng" name="sit3Eng" value="{{item_to_update.sit3Eng}}">
+			<br><br>
+			<input type="text" placeholder="Color1" name="color1" value="{{item_to_update.color1}}">
+			<input type="text" placeholder="Color1Eng" name="color1Eng" value="{{item_to_update.color1Eng}}">
+			<input type="text" placeholder="Color2" name="color2" value="{{item_to_update.color2}}">
+			<input type="text" placeholder="Color2Eng" name="color2Eng" value="{{item_to_update.color2Eng}}">
+			<input type="text" placeholder="Color3" name="color3" value="{{item_to_update.color3}}">
+			<input type="text" placeholder="Color3Eng" name="color3Eng" value="{{item_to_update.color3Eng}}">
+			<br><br>
+			Prep Time<br>
+			<input type="number" placeholder="Preparation Time" name="prepTime" value="{{item_to_update.prepTime}}">
+			<br><br>
+			
+			<input type="submit" value="Update">
+		</form>
+	</div>
+	
+</body>
+</html>
