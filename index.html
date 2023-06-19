@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Les recettes de Magic Laila et les video de cuisine">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <title>Magic Laila</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+        <link rel="icon" href="../images/photos/favicon.ico">
+        <link rel="stylesheet" href="stylesheet.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        
+        <input type="checkbox" id="toggle">
+        
+        <nav>
+            
+            <div id="lailaPhotoLogoContainer">
+                            <img src="../images/lailaSm.png" id="lailaPhotoSm">
+                            <div id="logo">
+                                MAGIC LAILA
+                            </div>
+
+            </div>
+           
+            
+            <label class="navbar-toggler" for="toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recipes">Recettes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/videos">Videos</a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link">Ateliers</a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link">Contact</a>
+                </li>
+                
+            </ul>
+            
+            <div class="secondMenu">
+                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>
+                    <button id="loginButton" onclick="openLoginForm()">Connexion</button>
+                    
+
+            </div>
+            
+        </nav>
+        
+<div id="animationContainer">               
+                        
+<img id="eggplant" src="/images/eggplant.png">
+<img id="tomato" src="/images/tomato.png">
+<img id="brocoli" src="/images/brocoli.png">
+<img id="pumpkin" src="/images/pumpkin.png">
+<div id="cornWrapper1">
+    <img id="corn" src="/images/corn.png">
+</div>
+<img id="lettuce" src="/images/lettuce.png">
+<div id="carotWrapper1">
+    <img id="carot" src="/images/carot.png">
+</div>
+</div>
+
+
+
+        <div id="columnsContainer">
+            
+            <div id="firstColumn">
+                
+                
+                
+                <div id="mottoContainer">
+                    <div id="motto1">
+                        La cuisine, 
+                    </div>
+                    <div id="motto2">
+                        une magie à partager...
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            <div id="secondColumn">
+                <img src="../images/laila.png" id="lailaPhoto">
+            </div>
+           
+           
+        </div>
+                    
+        
+        
+        <script>
+            function openLoginForm() {
+              window.open('/login', '_blank', 'height=350,width=350');
+            }
+        </script>
+        <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Add click event listener to each navigation link
+        navLinks.forEach((link) => {
+          link.addEventListener('click', function(event) {
+            // Remove active class from all links
+            navLinks.forEach((link) => {
+              link.classList.remove('active');
+            });
+        
+            // Add active class to the clicked link
+            this.classList.add('active');
+          });
+        });
+       </script>
+        
+       
+    
+    
+
+
+    </body>
+
+
+</html>
