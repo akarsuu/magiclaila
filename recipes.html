@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Les recettes de Magic Laila et les video de cuisine">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <title>Magic Laila</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+        <link rel="icon" href="../images/photos/favicon.ico">
+        <link rel="stylesheet" href="recipes.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        
+        <input type="checkbox" id="toggle">
+        
+        <nav>
+            
+            <div id="lailaPhotoLogoContainer">
+                            <img src="../images/lailaSm.png" id="lailaPhotoSm">
+                            <div id="logo">
+                                MAGIC LAILA
+                            </div>
+
+            </div>
+           
+            
+            <label class="navbar-toggler" for="toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/recipes">Recettes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/videos">Videos</a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link">Ateliers</a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link">Contact</a>
+                </li>
+                
+            </ul>
+            
+            <div class="secondMenu">
+                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>
+                    <button id="loginButton" onclick="openLoginForm()">Connexion</button>
+
+            </div>
+            
+        </nav>
+        
+               
+                        
+
+                        
+        <div id="mainLanding">
+                        
+            <div id="lailaPhotoLogoContainerSM">
+                            <div id="logoSM">
+                                MAGIC LAILA
+                            </div>
+                            <img src="../images/lailaSm.png" id="lailaPhotoSmSM">
+                            
+
+            </div>
+          
+            
+            <div id="mainContentMenu">
+    
+               <div id="mainInnerContainer2">
+                   
+                    <div id="mottoContainer">
+                        Je cuisine selon my mood
+                    </div>   
+                   
+                    <div id="trioFilterContainer">
+                    <form method="POST" action="{{ url_for('recipes') }}">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                             {{ form.color() }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.energy() }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.situation() }}
+                        </div>
+                        <br><br>
+                       <button type="submit" id="filterButton">Filtrer</button>
+                    </form>
+                    </div>    
+                </div>
+                
+                
+               <div id="mainInnerContainer"> 
+               
+                    
+                    <div class="sectionTitle">Recettes</div>
+                    <div class="searchBar">
+
+                        <form id="searchForm" action="/recipes" method="get">
+                            <input type="text" id="search" name="search_query">
+                            <button id="searchButton" type="submit">Recherche</button> 
+                        </form>
+                    </div>
+                    
+                    
+                   
+               </div>
+               
+            </div>
+            
+    
+            <div id="mainContentContainer">
+                
+                <div id="leftFilterContainer">
+                        <form class="mainFilterForm" method="GET" action="{{ url_for('recipes') }}">
+                            <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
+                            <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftFirstFilter">Petit-déjeuner</a>
+                            <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilter {% if main_filter == 'entree' %}active{% endif %}" id="leftSecondFilter">Entrée</a>
+                            <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilter {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftThirdFilter">Plat principal</a>
+                            <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilter {% if main_filter == 'légume' %}active{% endif %}" id="leftFourthFilter">Légume</a>
+                            <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilter {% if main_filter == 'dessert' %}active{% endif %}" id="leftFifthFilter">Dessert</a>
+                            <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilter {% if main_filter == 'fruit' %}active{% endif %}" id="leftSixthFilter">Fruit</a>
+                            <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilter {% if main_filter == 'boisson' %}active{% endif %}" id="leftSeventhFilter">Boisson</a>
+                        </form>
+                </div>
+                
+                <div id="leftFilterContainerContainer">
+                    <div id="leftFilterContainerSM">
+                            <form class="mainFilterFormSM" method="GET" action="{{ url_for('recipes') }}">
+                                
+                                <div id="firstGroupFilterSM">
+                                    <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
+                                    <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftFirstFilter">Petit-déjeuner</a>
+                                    <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilterSM {% if main_filter == 'entree' %}active{% endif %}" id="leftSecondFilter">Entrée</a>
+                                    <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilterSM {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftThirdFilter">Plat principal</a>
+                                </div>
+                                <div id="secondGroupFilterSM">
+                                    <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if main_filter == 'légume' %}active{% endif %}" id="leftFourthFilter">Légume</a>
+                                    <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilterSM {% if main_filter == 'dessert' %}active{% endif %}" id="leftFifthFilter">Dessert</a>
+                                    <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilterSM {% if main_filter == 'fruit' %}active{% endif %}" id="leftSixthFilter">Fruit</a>
+                                    <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilterSM {% if main_filter == 'boisson' %}active{% endif %}" id="leftSeventhFilter">Boisson</a>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+                
+                
+                
+                <div id="recipesContainer">
+                {% if results.items %}
+                    {% for results in results %} 
+                    <a href="/recipe/{{ results.id }}">
+                        <div id="mainLoopingContainer">
+                            
+    
+                                <div id="centerContentContainer">
+                                    
+                                    <div id="midPhotoContainer">
+                                        
+                                            <img class="firstImages" src="{{ results.img1 }}">
+                                        
+                                    </div>
+                                    <div id="textContainer" style="white-space: pre-line">
+                                       
+                                            <p id="title">
+                                               {{ results.name }}
+                                            </p>
+                                       
+                                        <p id="firstPar">{{ results.p1 }}</p>
+                                        <div id="prepTime">
+                                            <div>Durée de préparation :</div>
+                                            <div>&nbsp</div>
+                                            <div>{{ results.prepTime }}</div>
+                                            <div>&nbsp</div>
+                                            <div>minutes</div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                
+                            
+                        </div>
+                     </a>   
+                    {% endfor %}
+                {% else %}
+                    <div id="noResult">
+                        Aucun résultat correspondant à la recherche !
+                    </div>
+                {% endif %}
+                </div>  
+                
+                        
+            </div>
+            
+        </div>
+        
+        
+        <div id="loadMoreButtonContainer">
+                <button id="loadMoreButton">Suivantes</button> 
+            </div>
+        
+        
+                <div id="footer">
+            <a href="https://www.instagram.com/cooking_with_the_farahs/" class="socialHref" target="_blank">
+              <img class="socialImages" src="/images/social/insta.png">
+            </a>
+            <a href="https://www.youtube.com/@cookingwiththefarahs2537" class="socialHref" target="_blank">
+                <img class="socialImages" src="/images/social/youtube.png">
+            </a>
+        </div>
+        
+        <div id="signature">
+                <a href="https://portfolio.akarsuu.com" target="_blank">Design & Development akarsuu</a>
+        </div>
+        
+        <script>
+            function openLoginForm() {
+              window.open('/login', '_blank', 'height=350,width=350');
+            }
+        </script>
+        
+     
+        
+        <script>
+            // Get meal filter buttons
+            const filterButtons = document.querySelectorAll('.mainFilterForm .leftFilter');
+            
+            // Add click event to each button
+            filterButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                this.classList.add('active');
+              });
+            });
+        </script>
+        
+        <script>
+            //get sm meal buttons 
+            const smFilterButtons = document.querySelectorAll('.mainFilterFormSM .leftFilterSM');
+            // add clck event
+            smFilterButton.forEach(button => {
+                button.addEventListener('click', function(){
+                    //remove active clss from btns
+                    smFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    // add active clss to btns
+                    this.classList.add('active');
+                });
+            });
+            
+        </script>
+    
+    
+<script>
+  let currentPage = 1;
+  const perPage = 5;
+  let totalRecipes = {{ total_recipes }} - 5;
+
+  function fetchRecipes(page) {
+    const url = `/recipes?page=${page}&per_page=${perPage}`;
+
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        const tempContainer = document.createElement('div');
+        tempContainer.innerHTML = html;
+
+        const newRecipes = Array.from(tempContainer.querySelectorAll('#recipesContainer > a'));
+
+        const mainContainer = document.getElementById('recipesContainer');
+        newRecipes.forEach(recipe => {
+          mainContainer.appendChild(recipe.cloneNode(true));
+        });
+        totalRecipes -= newRecipes.length;
+
+        if (totalRecipes <= 0) {
+          const loadMoreButton = document.getElementById('loadMoreButton');
+          loadMoreButton.style.display = 'none';
+         
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  function handleLoadMore() {
+    currentPage++;
+    fetchRecipes(currentPage);
+  }
+
+  // Add event listener to the "Load More" button
+  const loadMoreButton = document.getElementById('loadMoreButton');
+  loadMoreButton.addEventListener('click', handleLoadMore);
+
+  // Hide the "Load More" button initially if there are no more recipes
+  if (totalRecipes <= 0) {
+    loadMoreButton.style.display = 'none';
+  }
+
+  // Check if there are initially fewer recipes than the perPage value
+  const initialRecipes = document.querySelectorAll('#recipesContainer > a');
+  if (initialRecipes.length < perPage && totalRecipes > 0) {
+    loadMoreButton.style.display = 'none';
+  }
+</script>
+     
+     <script>
+        // add active class the keep link bc color 
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Add click event listener to each navigation link
+        navLinks.forEach((link) => {
+          link.addEventListener('click', function(event) {
+            // Remove active class from all links
+            navLinks.forEach((link) => {
+              link.classList.remove('active');
+            });
+        
+            // Add active class to the clicked link
+            this.classList.add('active');
+          });
+        });
+       </script>
+
+    </body>
+
+
+</html>
