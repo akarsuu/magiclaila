@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload</title>
+	<link rel="stylesheet" href="upload.css">
+</head>
+<body>
+	
+	<div id="formContainer">
+		<h1>Upload</h1>
+		<form action="/upload" method="POST" enctype="multipart/form-data">
+			<input type="text" placeholder="Name" name="name" required>
+			<input type="text" placeholder="Name Eng" name="nameEng">
+			<br><br> 
+			<input type="file" name="image1">
+			<input type="text" placeholder="1 Image Path" name="img1">
+			<input type="file" name="image2">
+			<input type="text" placeholder="2 Image Path" name="img2">
+			<input type="file" name="image3">
+			<input type="text" placeholder="3 Image Path" name="img3">
+			<input type="file" name="image4">
+			<input type="text" placeholder="4 Image Path" name="img4">
+			<input type="file" name="image5">
+			<input type="text" placeholder="5 Image Path" name="img5">
+			<input type="file" name="image6">
+			<input type="text" placeholder="6 Image Path" name="img6">
+			<input type="file" name="image7">
+			<input type="text" placeholder="7 Image Path" name="img7">
+			<input type="file" name="image8">
+			<input type="text" placeholder="8 Image Path" name="img8">
+			<input type="file" name="image9">
+			<input type="text" placeholder="9 Image Path" name="img9">
+			<input type="file" name="image10">
+			<input type="text" placeholder="10 Image Path" name="img10">
+			<br>
+			<br>
+			Le teaser a verifier la disposition en fonction de la longuer<br>
+            <textarea placeholder="Poeme" name="p1" rows="5" cols="50"></textarea>
+            <textarea placeholder="Poeme Eng" name="p1Eng" rows="5" cols="50"></textarea>
+            <textarea placeholder="Ingrédients" name="p2" rows="5" cols="50"></textarea>
+            <textarea placeholder="Ingredients Eng" name="p2Eng" rows="5" cols="50"></textarea>			
+
+            <br><br>
+            
+			<textarea placeholder="Etapes de la prep" name="p3" rows="5" cols="50"></textarea>
+			<textarea placeholder="Preparation steps" name="p3Eng" rows="5" cols="50"></textarea>
+
+			<textarea placeholder="Titre Optionnel" name="p4" rows="5" cols="50"></textarea>
+			<textarea placeholder="Optional Title" name="p4Eng" rows="5" cols="50"></textarea>
+			<br><br>
+			<textarea placeholder="Contenu Optionnel" name="p5" rows="5" cols="50"></textarea>
+			<textarea placeholder="Optional Content" name="p5Eng" rows="5" cols="50"></textarea>
+            <!--
+			<textarea placeholder="p6" name="p6" rows="5" cols="50"></textarea>
+			<textarea placeholder="p6Eng" name="p6Eng" rows="5" cols="50"></textarea>
+
+			<br><br>
+			<textarea placeholder="p7" name="p7" rows="5" cols="50"></textarea>
+			<textarea placeholder="p7Eng" name="p7Eng" rows="5" cols="50"></textarea>
+
+			
+			<textarea placeholder="p8" name="p8" rows="5" cols="50"></textarea>
+			<textarea placeholder="p8Eng" name="p8Eng" rows="5" cols="50"></textarea>
+
+			<br><br>
+			<textarea placeholder="p9" name="p9" rows="5" cols="50"></textarea>
+			<textarea placeholder="p9Eng" name="p9Eng" rows="5" cols="50"></textarea>
+			<textarea placeholder="p10" name="p10" rows="5" cols="50"></textarea>
+			-->
+			<textarea placeholder="Vid HTML" name="p10Eng" rows="5" cols="50"></textarea>
+			<br><br>
+	
+			<input type="text" placeholder="meal" name="meal">
+			<input type="text" placeholder="mealEng" name="mealEng">
+			<br><br>
+			<input type="text" placeholder="energy1" name="energy1">
+			<input type="text" placeholder="energy1Eng" name="energy1Eng">
+			<input type="text" placeholder="energy2" name="energy2">
+			<input type="text" placeholder="energy2Eng" name="energy2Eng">
+			<input type="text" placeholder="energy3" name="energy3">
+			<input type="text" placeholder="energy3Eng" name="energy3Eng">
+
+			<input type="text" placeholder="sit1" name="sit1">
+			<input type="text" placeholder="sit1Eng" name="sit1Eng">
+			<input type="text" placeholder="sit2" name="sit2">
+			<input type="text" placeholder="sit2Eng" name="sit2Eng">
+			<input type="text" placeholder="sit3" name="sit3">
+			<input type="text" placeholder="sit3Eng" name="sit3Eng">
+			<br><br>
+			<input type="text" placeholder="color1" name="color1">
+			<input type="text" placeholder="color1Eng" name="color1Eng">
+			<input type="text" placeholder="color2" name="color2">
+			<input type="text" placeholder="color2Eng" name="color2Eng">
+			<input type="text" placeholder="color3" name="color3">
+			<input type="text" placeholder="color3Eng" name="color3Eng">
+			<br><br>
+			<input type="text" placeholder="prepTime" name="prepTime">
+			<br><br>
+			
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+	<br/>
+
+
+	<div id="uploadedContent">
+		{% for item in all_data %}
+		<div class="item-groups">
+			<h5>
+				{{ item.id }} {{ item.name }}<br><br> {{ item.img1 }} {{ item.img2 }} {{ item.img3 }} {{ item.img4 }} {{ item.img5 }} {{ item.img6 }} {{ item.img7 }} {{ item.img8 }} {{ item.img9 }} {{ item.img10 }}<br><br> {{ item.p1 }} {{ item.p1Eng }}<br><br> {{ item.p2 }} <br><br> {{ item.p3 }}<br><br> {{ item.p4 }} <br><br> {{ item.p5 }} <br><br> {{ item.p6 }} <br><br> {{ item.p7 }} <br><br> {{ item.p8 }} <br><br> {{ item.p9 }} <br><br> {{ item.p10 }} <br><br> {{ item.meal }} <br> {{ item.color1 }} {{ item.color1Eng }} {{ item.color2 }} {{ item.color2Eng }} {{ item.color3 }} {{ item.color3Eng }} <br> {{ item.energy1 }} {{ item.sit1 }} {{ item.sit1Eng }} {{ item.prepTime}}<br> <a href="/update/{{item.id}}" class="updateButton">Update</a>
+				<a href="/delete/{{item.id}}" class="deleteButton">Delete</a></h5>
+		</div> 
+		{% endfor %}
+	</div>
+</body>
+</html>
