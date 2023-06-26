@@ -1,0 +1,75 @@
+body{
+    text-decoration:none;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    top:0;
+    left:0;
+    background: linear-gradient(to right, red, #DAD2D5, #DAD2D5,#ECE2D3, #ECE2D3);
+    height: 100%;
+    font-family: 'Roboto Flex', sans-serif;  
+    font-size: 13px;
+    font-weight: 400;
+    color:#3c081d;
+    line-height:25px;
+    overflow: -moz-scrollbars-none;
+}
+
+
+a {
+    font-family:'Roboto Flex', sans-serif;
+    font-size: 12px;
+    color:white;
+    text-decoration: none;
+}
+
+#formContainer{
+    width:90%;
+    margin:auto;
+    padding:auto;
+    background:rgb(207, 204, 204);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+#uploadedContent{
+    width:91%;
+    margin:auto;
+    padding:auto;
+    background-color:none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-groups{
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.updateButton{
+    color:white;
+    text-decoration: none;
+    border:1px solid;
+    background-color: green;
+    border-color: green;
+    border-radius: 15px;
+    padding:10px;
+    margin-left:70%;
+}
+
+.deleteButton{
+    color:white;
+    text-decoration: none;
+    border:1px solid;
+    background-color: red;
+    border-color: red;
+    border-radius: 15px;
+    padding:10px;
+    margin-left:2%;
+}
