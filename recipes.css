@@ -331,7 +331,16 @@ input:checked ~ nav .navbar-toggler .bar:nth-child(3){
     width:100%;
 }
 
-
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 #search{
     border-radius: 50px;
@@ -1127,7 +1136,7 @@ nav .navbar-toggler{
 nav .nav-list{
     display:grid;
     position:absolute;
-    background:black;
+    background:#f0430e;
     width:100%;
     top:-20px;
     left:80px;
@@ -1138,7 +1147,7 @@ nav .nav-list{
 }
 
 nav .nav-list .nav-item{
-    padding: 0 30px;
+    padding: 0 5px;
 }
 
 nav .navbar-toggler{
@@ -1408,7 +1417,7 @@ nav .navbar-toggler{
 nav .nav-list{
     display:grid;
     position:absolute;
-    background:black;
+    background:#f0430e;
     width:100%;
     top:-20px;
     left:80px;
@@ -1419,7 +1428,7 @@ nav .nav-list{
 }
 
 nav .nav-list .nav-item{
-    padding: 0 30px;
+    padding: 0 5px;
 }
 
 nav .navbar-toggler{
