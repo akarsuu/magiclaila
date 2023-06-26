@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        
         <meta name="description" content="Les recettes de Magic Laila et les video de cuisine">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -23,7 +24,7 @@
         <nav>
             
             <div id="lailaPhotoLogoContainer">
-                            <img src="../images/lailaSm.png" id="lailaPhotoSm">
+                            <img src="../images/lailaSm.png" loading="lazy" alt="laila profile photo" id="lailaPhotoSm">
                             <div id="logo">
                                 MAGIC LAILA
                             </div>
@@ -52,13 +53,14 @@
                     <a class="nav-link">Ateliers</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link">Contact</a>
+                    <a href="mailto:laila.aksen@gmail.com?subject=Email subject&body=Email body" class="nav-link">Contact</a>
                 </li>
                 
             </ul>
             
             <div class="secondMenu">
-                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>
+                <!--
+                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>-->
                     <button id="loginButton" onclick="openLoginForm()">Connexion</button>
 
             </div>
@@ -72,7 +74,7 @@
                             <div id="logoSM">
                                 MAGIC LAILA
                             </div>
-                            <img src="../images/lailaSm.png" id="lailaPhotoSmSM">
+                            <img src="../images/lailaSm.png" loading="lazy" alt="laila small photo" id="lailaPhotoSmSM">
                             
 
             </div>
@@ -107,6 +109,7 @@
                     <div class="sectionTitle">Recettes</div>
                     <div class="searchBar">
                         <form id="searchForm" action="/recipes" method="get">
+                            <label for="search" class="label">Search:</label>
                             <input type="text" id="search" name="search_query">
                             <button id="searchButton" type="submit">Recherche</button> 
                         </form>
@@ -123,8 +126,8 @@
                 
                     <div id="leftFilterContainer">
                         <form class="mainFilterForm" method="GET" action="{{ url_for('recipes') }}">
-                            <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
-                             <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftFirstFilter">Petit-déjeuner</a>
+                            <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilterFirst">Apéritif</a>
+                             <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftFirstFilterSecond">Petit-déjeuner</a>
                             <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilter {% if main_filter == 'entree' %}active{% endif %}" id="leftSecondFilter">Entrée</a>
                             <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilter {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftThirdFilter">Plat principal</a>
                             <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilter {% if main_filter == 'légume' %}active{% endif %}" id="leftFourthFilter">Légume</a>
@@ -140,16 +143,16 @@
                             <form class="mainFilterFormSM" method="GET" action="{{ url_for('recipes') }}">
                                 
                                 <div id="firstGroupFilterSM">
-                                    <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
-                                    <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftFirstFilter">Petit-déjeuner</a>
-                                    <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilterSM {% if main_filter == 'entree' %}active{% endif %}" id="leftSecondFilter">Entrée</a>
-                                    <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilterSM {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftThirdFilter">Plat principal</a>
+                                    <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilterSm">Apéritif</a>
+                                    <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilterSm">Petit-déjeuner</a>
+                                    <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilterSM {% if main_filter == 'entree' %}active{% endif %}" id="leftThirdFilterSm">Entrée</a>
+                                    <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilterSM {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftFourthFilterSm">Plat principal</a>
                                 </div>
                                 <div id="secondGroupFilterSM">
-                                    <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if main_filter == 'légume' %}active{% endif %}" id="leftFourthFilter">Légume</a>
-                                    <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilterSM {% if main_filter == 'dessert' %}active{% endif %}" id="leftFifthFilter">Dessert</a>
-                                    <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilterSM {% if main_filter == 'fruit' %}active{% endif %}" id="leftSixthFilter">Fruit</a>
-                                    <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilterSM {% if main_filter == 'boisson' %}active{% endif %}" id="leftSeventhFilter">Boisson</a>
+                                    <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if main_filter == 'légume' %}active{% endif %}" id="leftFifthFilterSm">Légume</a>
+                                    <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilterSM {% if main_filter == 'dessert' %}active{% endif %}" id="leftSixthFilterSm">Dessert</a>
+                                    <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilterSM {% if main_filter == 'fruit' %}active{% endif %}" id="leftSeventhFilterSm">Fruit</a>
+                                    <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilterSM {% if main_filter == 'boisson' %}active{% endif %}" id="leftEigthFilterSm">Boisson</a>
                                 </div>
                             </form>
                         </div>
@@ -167,7 +170,7 @@
                                 </div>
                                 
                                 <div id="wandContainer">
-                                    <img id="wand" src="../static/images/wand.png">
+                                    <img id="wand" alt="magic wand pic" loading="lazy" src="../static/images/wand.png">
                                 </div>
                             
 
@@ -178,7 +181,7 @@
                             
                             
                             <div id="imgContainerItem">
-                                <img class="imgItem" src="../{{ recipe.img1 }}">
+                                <img class="imgItem" loading="lazy" src="../{{ recipe.img1 }}" alt="instructive images">
                             </div>
                             <div id="ingTitleIngListContainer">
                                 <div id="ingredientsTitleContainer">
@@ -203,14 +206,14 @@
                                         </div> 
                                         
                                         <div class="smImages">
-                                            <img class="smImages" src="../{{ recipe.img2 }}">
+                                            <img class="smImages" loading="lazy" src="../{{ recipe.img2 }}" alt="instructive images">
                                         </div>
                                         <div id="etapesTextContainer" class="texts" style="white-space: pre-line">
                                             {{ recipe.p1 }}
                                         </div>
                                         
                                         <div class="smImages">
-                                            <img class="smImages" src="../{{ recipe.img3 }}">
+                                            <img class="smImages" loading="lazy" src="../{{ recipe.img3 }}" alt="instructive images">
                                         </div>
                                         
                                         <div id="titreFree" class="texts">
@@ -218,7 +221,7 @@
                                         </div>
                                         
                                         <div class="smImages">
-                                            <img class="smImages" src="../{{ recipe.img4 }}">
+                                            <img class="smImages" loading="lazy" src="../{{ recipe.img4 }}" alt="instructive images">
                                         </div>
                                         
                                         <div id="textFree" style="white-space: pre-line">
@@ -241,9 +244,9 @@
                             
                                 <div id="imgContainerItem2">
                                    
-                                   <img class="imgItem" src="../{{ recipe.img2 }}">
-                                   <img class="imgItem" src="../{{ recipe.img3 }}">
-                                   <img class="imgItem" src="../{{ recipe.img4 }}">
+                                   <img class="imgItem" loading="lazy" src="../{{ recipe.img2 }}">
+                                   <img class="imgItem"  loading="lazy" src="../{{ recipe.img3 }}">
+                                   <img class="imgItem"  loading="lazy" src="../{{ recipe.img4 }}">
                                    <div id="vidWrapper">
                                     {{ recipe.p10Eng|safe }}
                                 </div>
@@ -267,10 +270,10 @@
         
                <div id="footer">
             <a href="https://www.instagram.com/cooking_with_the_farahs/" class="socialHref" target="_blank">
-              <img class="socialImages" src="/images/social/insta.png">
+              <img class="socialImages" alt="youtube link" loading="lazy" src="/images/social/insta.png">
             </a>
             <a href="https://www.youtube.com/@cookingwiththefarahs2537" class="socialHref" target="_blank">
-                <img class="socialImages" src="/images/social/youtube.png">
+                <img class="socialImages" alt="instagram link" loading="lazy" src="/images/social/youtube.png">
             </a>
         </div>
         
@@ -280,12 +283,13 @@
         
         <script>
             function openLoginForm() {
-              window.open('/login', '_blank', 'height=350,width=350');
-            }
+                  window.open('/login', '_blank', 'height=350,width=350');
+                }
+
         </script>
    
         <script>
-            // Get mail filter buttons
+            // Get meal filter buttons
             const filterButtons = document.querySelectorAll('.mainFilterForm .leftFilter');
             
             // Add click event to each button

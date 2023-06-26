@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Les recettes de Magic Laila et les video de cuisine">
@@ -23,7 +23,7 @@
         <nav>
             
             <div id="lailaPhotoLogoContainer">
-                            <img src="../images/lailaSm.png" id="lailaPhotoSm">
+                            <img src="../images/lailaSm.png" id="lailaPhotoSm" alt="Laila Photo">
                             <div id="logo">
                                 MAGIC LAILA
                             </div>
@@ -52,13 +52,14 @@
                     <a class="nav-link">Ateliers</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link">Contact</a>
+                    <a href="mailto:laila.aksen@gmail.com?subject=Email subject&body=Email body" class="nav-link">Contact</a>
                 </li>
                 
             </ul>
             
             <div class="secondMenu">
-                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>
+                <!--
+                    <li><a id="langLink" href="https://www.magiclaila.com/eng">English</a></li>-->
                     <button id="loginButton" onclick="openLoginForm()">Connexion</button>
 
             </div>
@@ -71,7 +72,7 @@
                             <div id="logoSM">
                                 MAGIC LAILA
                             </div>
-                            <img src="../images/lailaSm.png" id="lailaPhotoSmSM">
+                            <img src="../images/lailaSm.png" id="lailaPhotoSmSM" alt="Laila Small Photo">
                             
 
             </div>
@@ -108,6 +109,7 @@
                     <div class="sectionTitle">Videos</div>
                     <div class="searchBar">
                         <form id="searchForm" action="/videos" method="get">
+                            <label for="search" class="label">Search:</label>
                             <input type="text" id="search" name="search_query">
                             <button id="searchButton" type="submit">Recherche</button> 
                         </form>
@@ -208,10 +210,10 @@
         
         <div id="footer">
             <a href="https://www.instagram.com/cooking_with_the_farahs/" class="socialHref" target="_blank">
-              <img class="socialImages" src="/images/social/insta.png">
+              <img class="socialImages" src="/images/social/insta.png" alt="Instagram logo">
             </a>
             <a href="https://www.youtube.com/@cookingwiththefarahs2537" class="socialHref" target="_blank">
-                <img class="socialImages" src="/images/social/youtube.png">
+                <img class="socialImages" src="/images/social/youtube.png" alt="Youtube logo">
             </a>
         </div>
         
