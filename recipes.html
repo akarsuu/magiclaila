@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>Magic Laila</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+        
         <link rel="icon" href="../images/photos/favicon.ico">
         <link rel="stylesheet" href="recipes.css">
         
@@ -24,7 +22,7 @@
         <nav>
             
             <div id="lailaPhotoLogoContainer">
-                            <img src="../images/lailaSm.png" id="lailaPhotoSm" alt="laila photo">
+                            <img src="../images/lailaSm.webp" id="lailaPhotoSm" alt="laila photo">
                             <div id="logo">
                                 MAGIC LAILA
                             </div>
@@ -77,7 +75,7 @@
                             <div id="logoSM">
                                 MAGIC LAILA
                             </div>
-                            <img src="../images/lailaSm.png" id="lailaPhotoSmSM" alt="laila small photo">
+                            <img src="../images/lailaSm.webp" id="lailaPhotoSmSM" alt="laila small photo">
                             
 
             </div>
@@ -136,8 +134,8 @@
                         <form class="mainFilterForm" method="GET" action="{{ url_for('recipes') }}">
                             <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
                             <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilter">Petit-déjeuner</a>
-                            <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilter {% if main_filter == 'entree' %}active{% endif %}" id="leftThirdFilter">Entrée</a>
-                            <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilter {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftFourthFilter">Plat principal</a>
+                            <a href="{{ url_for('recipes', main_filter='entrée') }}" class="leftFilter {% if main_filter == 'entrée' %}active{% endif %}" id="leftThirdFilter">Entrée</a>
+                            <a href="{{ url_for('recipes', main_filter='plat+ principal') }}" class="leftFilter {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftFourthFilter">Plat principal</a>
                             <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilter {% if main_filter == 'légume' %}active{% endif %}" id="leftFifthFilter">Légume</a>
                             <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilter {% if main_filter == 'dessert' %}active{% endif %}" id="leftSixthFilter">Dessert</a>
                             <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilter {% if main_filter == 'fruit' %}active{% endif %}" id="leftSeventhFilter">Fruit</a>
