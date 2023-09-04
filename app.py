@@ -105,7 +105,7 @@ class ColorForm2(FlaskForm):
 
 
 class MainFilterForm(FlaskForm):
-    main_filter = SelectField('Main Filter', choices=[('apéritif', 'Apéritif'), ('entrée', 'Entrée'), ('plat principal', 'Plat principal'), ('légume', 'Légume'), ('dessert', 'Dessert'), ('fruit', 'Fruit'), ('boisson', 'Boisson'), ('petit-déjeuner', 'Petit-déjeuner')], validators=[DataRequired()])
+    main_filter = SelectField('Main Filter', choices=[('apéritif', 'Apéritif'), ('entrée', 'Entrée'), ('plat principal', 'Plat principal'), ('légume', 'Légume'), ('dessert', 'Dessert'), ('fruit', 'Fruit'), ('boisson', 'boisson'), ('petit-déjeuner', 'Petit-déjeuner')], validators=[DataRequired()])
     submit = SubmitField('Filter')
 
 def login_required(route_function):
@@ -201,79 +201,50 @@ def update(id):
     else:
         return render_template('update.html', item_to_update=item_to_update)
 
-
 @app.route('/recipes', methods=['GET', 'POST'])
 def recipes():
     selected_meal = request.args.get('main_filter')
-    form = ColorForm2()
-    search_query = request.args.get('search_query')
-
-    if selected_meal:
-        main_results = Recettes.query.filter(Recettes.meal.ilike(selected_meal)).all()
-        if main_results:
-            # Main filter has a valid result, proceed with filtering based on color, energy, and situation
-            if form.validate_on_submit():
-                selected_color = form.color.data
-                selected_energy = form.energy.data
-                selected_situation = form.situation.data
-
-                filtered_results = [result for result in main_results if
-                                    result.color1 == selected_color and
-                                    result.energy1 == selected_energy and
-                                    result.sit1 == selected_situation]
-                results = filtered_results
-            else:
-                results = main_results
-        else:
-            # Main filter does not have a valid result, fallback to default behavior
-            results = Recettes.query.order_by(Recettes.date_created.desc())
-    else:
-        # No main filter selected, fallback to default behavior
-        if form.validate_on_submit():
-            selected_color = form.color.data
-            selected_energy = form.energy.data
-            selected_situation = form.situation.data
-
-            if selected_color != 'all' and selected_energy != 'all' and selected_situation != 'all':
-                results = Recettes.query.filter_by(color1=selected_color,
-                                                   energy1=selected_energy,
-                                                   sit1=selected_situation).order_by(Recettes.date_created.desc())
-            elif selected_color != 'all' and selected_situation == 'all' and selected_energy == 'all':
-                results = Recettes.query.filter_by(color1=selected_color).order_by(Recettes.date_created.desc())
-            elif selected_energy != 'all' and selected_situation == 'all' and selected_color == 'all':
-                results = Recettes.query.filter_by(energy1=selected_energy).order_by(Recettes.date_created.desc())
-            elif selected_situation != 'all' and selected_color == 'all' and selected_energy == 'all':
-                results = Recettes.query.filter_by(sit1=selected_situation).order_by(Recettes.date_created.desc())
-            elif selected_color != 'all' and selected_situation != 'all' and selected_energy == 'all':
-                results = Recettes.query.filter_by(color1=selected_color, sit1=selected_situation).order_by(
-                    Recettes.date_created.desc())
-            elif selected_color != 'all' and selected_energy != 'all' and selected_situation == 'all':
-                results = Recettes.query.filter_by(color1=selected_color, energy1=selected_energy).order_by(
-                    Recettes.date_created.desc())
-            elif selected_situation != 'all' and selected_energy != 'all' and selected_color == 'all':
-                results = Recettes.query.filter_by(sit1=selected_situation, energy1=selected_energy).order_by(
-                    Recettes.date_created.desc())
-            else:
-                results = Recettes.query.order_by(Recettes.date_created.desc())
-        else:
-            results = Recettes.query.order_by(Recettes.date_created.desc())
-
-    search_columns = [Recettes.name, Recettes.p1, Recettes.p2, Recettes.p3, Recettes.p4, Recettes.p5]
-    
-    if search_query:
-        query_filters = []
-        for column in search_columns:
-            query_filters.append(column.ilike(f'%{search_query}%'))
-        
-        results = results.filter(or_(*query_filters)).order_by(Recettes.date_created.desc())
-
     page = request.args.get('page', 1, type=int)
     per_page = 5
-    paginated_results = results.paginate(page=page, per_page=per_page)
-    total_recipes = Recettes.query.count()
-    
 
-    return render_template('recipes.html', form=form, results=paginated_results, main_filter=selected_meal, total_recipes=total_recipes, search_query=search_query)
+    # Create the base query
+    query = db.session.query(Recettes)
+
+    form = ColorForm2(request.form)
+
+    if selected_meal:
+        query = query.filter(Recettes.meal.ilike(selected_meal))
+
+    selected_color = form.color.data
+    selected_energy = form.energy.data
+    selected_situation = form.situation.data
+    
+    
+    if form.validate_on_submit():
+        if selected_color != 'all':
+            query = query.filter(
+                (Recettes.color1 == selected_color) |
+                (Recettes.color2 == selected_color) |
+                (Recettes.color3 == selected_color)
+            )
+        
+        if selected_energy != 'all':
+            query = query.filter(Recettes.energy1 == selected_energy)
+    
+        if selected_situation != 'all':
+            query = query.filter(Recettes.sit1 == selected_situation)
+    
+    search_query = request.args.get('search_query')
+    if search_query:
+        search_columns = [Recettes.name, Recettes.p1, Recettes.p2, Recettes.p3, Recettes.p4, Recettes.p5]
+        query_filters = [column.ilike(f'%{search_query}%') for column in search_columns]
+        query = query.filter(or_(*query_filters))
+    
+    # Paginate the query
+    paginated_results = query.paginate(page=page, per_page=per_page, error_out=False)
+    total_recipes = db.session.query(Recettes).count()
+
+    return render_template('recipes.html', results=paginated_results, main_filter=selected_meal, selected_meal=selected_meal, total_recipes=total_recipes, form=form, search_query=search_query)
 
 @app.route('/videos', methods=['GET', 'POST'])
 def videos():
@@ -587,7 +558,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        if username == 'XXXXXXXXXXX' and password == 'XXXXXXXXX':
+        if username == 'theMagictheLaila' and password == '345dkgb&':
             session.permanent = True
             app.permanent_session_lifetime = timedelta(minutes=120)
             session['logged_in'] = True

@@ -132,14 +132,16 @@
                 
                 <div id="leftFilterContainer">
                         <form class="mainFilterForm" method="GET" action="{{ url_for('recipes') }}">
-                            <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
-                            <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilter">Petit-déjeuner</a>
-                            <a href="{{ url_for('recipes', main_filter='entrée') }}" class="leftFilter {% if main_filter == 'entrée' %}active{% endif %}" id="leftThirdFilter">Entrée</a>
-                            <a href="{{ url_for('recipes', main_filter='plat+ principal') }}" class="leftFilter {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftFourthFilter">Plat principal</a>
-                            <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilter {% if main_filter == 'légume' %}active{% endif %}" id="leftFifthFilter">Légume</a>
-                            <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilter {% if main_filter == 'dessert' %}active{% endif %}" id="leftSixthFilter">Dessert</a>
-                            <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilter {% if main_filter == 'fruit' %}active{% endif %}" id="leftSeventhFilter">Fruit</a>
-                            <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilter {% if main_filter == 'boisson' %}active{% endif %}" id="leftEigthFilter">Boisson</a>
+                           
+                            
+                            <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilter {% if selected_meal == 'aperitif' %}active{% endif %}" id="leftFirstFilter">Apéritif</a>
+                            <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilter {% if selected_meal == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilter">Petit-déjeuner</a>
+                            <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilter {% if selected_meal == 'entree' %}active{% endif %}" id="leftThirdFilter">Entrée</a>
+                            <a href="{{ url_for('recipes', main_filter='plat principal') }}" class="leftFilter {% if selected_meal == 'plat principal' %}active{% endif %}" id="leftFourthFilter">Plat principal</a>
+                            <a href="{{ url_for('recipes', main_filter='legume') }}" class="leftFilter {% if selected_meal == 'legume' %}active{% endif %}" id="leftFifthFilter">Légume</a>
+                            <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilter {% if selected_meal == 'dessert' %}active{% endif %}" id="leftSixthFilter">Dessert</a>
+                            <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilter {% if selected_meal == 'fruit' %}active{% endif %}" id="leftSeventhFilter">Fruit</a>
+                            <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilter {% if selected_meal == 'boisson' %}active{% endif %}" id="leftEighthFilter">Boisson</a>
                         </form>
                 </div>
                 
@@ -150,8 +152,11 @@
                                 <div id="firstGroupFilterSM">
                                     <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilterSm">Apéritif</a>
                                     <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilterSm">Petit-déjeuner</a>
-                                    <a href="{{ url_for('recipes', main_filter='entree') }}" class="leftFilterSM {% if main_filter == 'entree' %}active{% endif %}" id="leftThirdFilterSm">Entrée</a>
-                                    <a href="{{ url_for('recipes', main_filter='plat_principal') }}" class="leftFilterSM {% if main_filter == 'plat_principal' %}active{% endif %}" id="leftFourthFilterSm">Plat principal</a>
+                                    <a href="{{ url_for('recipes', main_filter='entrée') }}" class="leftFilterSM {% if main_filter == 'entrée' %}active{% endif %}" id="leftThirdFilterSm">Entrée</a>
+                                   
+                                    <a href="{{ url_for('recipes', main_filter='plat principal' |replace(' ', '%20')) }}" class="leftFilterSM {% if main_filter == 'plat principal' %}active{% endif %}" id="leftFourthFilterSm">Plat principal</a>
+                                    
+                                    
                                 </div>
                                 <div id="secondGroupFilterSM">
                                     <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if main_filter == 'légume' %}active{% endif %}" id="leftFifthFilterSm">Légume</a>
@@ -161,14 +166,14 @@
                                 </div>
                             </form>
                     </div>
-                </div>
+                </div> 
                 
                 
                 
                 <div id="recipesContainer">
                 {% if results.items %}
-                    {% for results in results %} 
-                    <a href="/recipe/{{ results.id }}">
+                    {% for recipe in results.items %} 
+                    <a href="/recipe/{{ recipe.id }}">
                         <div id="mainLoopingContainer">
                             
     
@@ -176,20 +181,20 @@
                                     
                                     <div id="midPhotoContainer">
                                         
-                                            <img class="firstImages" loading="lazy" src="{{ results.img1 }}" alt="Photo Recette Couverture">
+                                            <img class="firstImages" loading="lazy" src="{{ recipe.img1 }}" alt="Photo Recette Couverture">
                                         
                                     </div>
                                     <div id="textContainer" style="white-space: pre-line">
                                        
                                             <p id="title">
-                                               {{ results.name }}
+                                               {{ recipe.name }}
                                             </p>
                                        
-                                        <p id="firstPar">{{ results.p1 }}</p>
+                                        <p id="firstPar">{{ recipe.p1 }}</p>
                                         <div id="prepTime">
                                             <div>Durée de préparation :</div>
                                             <div>&nbsp</div>
-                                            <div>{{ results.prepTime }}</div>
+                                            <div>{{ recipe.prepTime }}</div>
                                             <div>&nbsp</div>
                                             <div>minutes</div>
                                         </div>
@@ -270,6 +275,8 @@
             
         </script>
     
+        
+    
     
 <script>
   let currentPage = 1;
@@ -342,6 +349,12 @@
           });
         });
        </script>
+
+    <script>
+        console.log("selected meal: {{selected_meal}}");
+        console.log("main_filter: {{main_filter}}");
+    </script>
+
 
     </body>
 
