@@ -7,7 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField
 from wtforms.validators import DataRequired
 from wtforms import validators
-from sqlalchemy import or_
+from sqlalchemy import or_, desc
 from functools import wraps
 
 
@@ -208,7 +208,7 @@ def recipes():
     per_page = 5
 
     # Create the base query
-    query = db.session.query(Recettes)
+    query = db.session.query(Recettes).order_by(desc(Recettes.date_created))
 
     form = ColorForm2(request.form)
 
@@ -229,7 +229,13 @@ def recipes():
             )
         
         if selected_energy != 'all':
-            query = query.filter(Recettes.energy1 == selected_energy)
+            query = query.filter(
+                or_(
+                    Recettes.energy1 == selected_energy,
+                    Recettes.energy2 == selected_energy,
+                    Recettes.energy3 == selected_energy
+                )
+            )
     
         if selected_situation != 'all':
             query = query.filter(Recettes.sit1 == selected_situation)
