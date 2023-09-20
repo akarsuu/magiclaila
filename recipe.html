@@ -7,15 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>Magic Laila</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
         <link rel="icon" href="../images/photos/favicon.ico">
         <link rel="stylesheet" href="../static/recipe.css">
         
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap" rel="stylesheet">
+        
     </head>
     <body>
         
@@ -24,7 +19,7 @@
         <nav>
             
             <div id="lailaPhotoLogoContainer">
-                            <img src="../images/lailaSm.png" loading="lazy" alt="laila profile photo" id="lailaPhotoSm">
+                            <img src="../images/lailaSm.webp" loading="lazy" alt="laila profile photo" id="lailaPhotoSm">
                             <div id="logo">
                                 MAGIC LAILA
                             </div>
@@ -74,7 +69,7 @@
                             <div id="logoSM">
                                 MAGIC LAILA
                             </div>
-                            <img src="../images/lailaSm.png" loading="lazy" alt="laila small photo" id="lailaPhotoSmSM">
+                            <img src="../images/lailaSm.webp" loading="lazy" alt="laila small photo" id="lailaPhotoSmSM">
                             
 
             </div>
@@ -170,7 +165,7 @@
                                 </div>
                                 
                                 <div id="wandContainer">
-                                    <img id="wand" alt="magic wand pic" loading="lazy" src="../static/images/wand.png">
+                                    <img id="wand" alt="magic wand pic" loading="lazy" src="../static/images/wand.webp">
                                 </div>
                             
 
@@ -181,7 +176,7 @@
                             
                             
                             <div id="imgContainerItem">
-                                <img class="imgItem" loading="lazy" src="../{{ recipe.img1 }}" alt="instructive images">
+                                <img class="imgItem" loading="lazy" src="../{{ recipe.img1 }}" alt="main image">
                             </div>
                             <div id="ingTitleIngListContainer">
                                 <div id="ingredientsTitleContainer">
@@ -206,14 +201,23 @@
                                         </div> 
                                         
                                         <div class="smImages">
-                                            <img class="smImages" loading="lazy" src="../{{ recipe.img2 }}" alt="instructive images">
+                                            {% if recipe.img2 %}
+                                                <img class="smImages" loading="lazy" src="../{{ recipe.img2 }}" alt="instructive images">
+                                            {% elif not recipe.img2 %}
+                                            {% endif %}
+                                           
                                         </div>
                                         <div id="etapesTextContainer" class="texts" style="white-space: pre-line">
                                             {{ recipe.p1 }}
                                         </div>
                                         
                                         <div class="smImages">
-                                            <img class="smImages" loading="lazy" src="../{{ recipe.img3 }}" alt="instructive images">
+                                            
+                                            {% if recipe.img3 %}
+                                                <img class="smImages" loading="lazy" src="../{{ recipe.img3 }}" alt="instructive images">
+                                            {% elif not recipe.img3 %}
+                                            {% endif %}
+                                           
                                         </div>
                                         
                                         <div id="titreFree" class="texts">
@@ -221,7 +225,12 @@
                                         </div>
                                         
                                         <div class="smImages">
-                                            <img class="smImages" loading="lazy" src="../{{ recipe.img4 }}" alt="instructive images">
+                                            {% if recipe.img4 %}
+                                                <img class="smImages" loading="lazy" src="../{{ recipe.img4 }}" alt="instructive images">
+                                            {% elif not recipe.img4 %}
+                                            {% endif %}
+                                            
+                                            
                                         </div>
                                         
                                         <div id="textFree" style="white-space: pre-line">
@@ -231,7 +240,7 @@
                                             {{ recipe.p5 }}
                                         </div>
                                         
-                                        <div id="vidSmWrapper">
+                                        <div id="vidSmWrapper" loading="lazy">
                                         {{ recipe.p10Eng|safe }}
                                         </div>
                                 </div>
@@ -244,9 +253,22 @@
                             
                                 <div id="imgContainerItem2">
                                    
-                                   <img class="imgItem" loading="lazy" src="../{{ recipe.img2 }}">
-                                   <img class="imgItem"  loading="lazy" src="../{{ recipe.img3 }}">
-                                   <img class="imgItem"  loading="lazy" src="../{{ recipe.img4 }}">
+                                   {% if recipe.img2 %}
+                                       <img class="imgItem" loading="lazy" src="../{{ recipe.img2 }}" alt="instructive images">
+                                    {% elif not recipe.img2 %}
+                                        
+                                    {% endif %}
+                                    
+                                    {% if recipe.img3 %}
+                                           <img class="imgItem"  loading="lazy" src="../{{ recipe.img3 }}" alt="instructive images">
+                                    {% elif not recipe.img3 %}
+                                    {% endif %}
+                                    
+                                    {% if recipe.img4 %}
+                                       <img class="imgItem"  loading="lazy" src="../{{ recipe.img4 }}" alt="instructive images">
+                                    {% elif not recipe.img4 %}
+                                    {% endif %}
+                                    
                                    <div id="vidWrapper">
                                     {{ recipe.p10Eng|safe }}
                                 </div>
@@ -281,6 +303,11 @@
                 <a href="https://portfolio.akarsuu.com" target="_blank">Design & Development akarsuu</a>
         </div>
         
+        
+        <script src="navlink.js"></script>
+        <script src="mealfilters.js"></script>
+        
+        
         <script>
             function openLoginForm() {
                   window.open('/login', '_blank', 'height=350,width=350');
@@ -288,38 +315,9 @@
 
         </script>
    
-        <script>
-            // Get meal filter buttons
-            const filterButtons = document.querySelectorAll('.mainFilterForm .leftFilter');
-            
-            // Add click event to each button
-            filterButtons.forEach(button => {
-              button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to the clicked button
-                this.classList.add('active');
-              });
-            });
-        </script>
         
-        <script>
-        // add active class the keep link bc color 
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        // Add click event listener to each navigation link
-        navLinks.forEach((link) => {
-          link.addEventListener('click', function(event) {
-            // Remove active class from all links
-            navLinks.forEach((link) => {
-              link.classList.remove('active');
-            });
         
-            // Add active class to the clicked link
-            this.classList.add('active');
-          });
-        });
-       </script>
+        
     
     </body>
 
