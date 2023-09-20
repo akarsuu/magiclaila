@@ -1,8 +1,10 @@
 *{
     text-decoration:none;
     list-style:none;
-    
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap');
+
 
 html,
 body{
@@ -824,6 +826,7 @@ hr {
     justify-content:center;
     background:none;
     flex-direction:column;
+    width:80%;
 
 }
 
@@ -1122,7 +1125,10 @@ nav .navbar-toggler{
 }
 
 .imgItem{
-    display:none;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    margin-bottom:1%;
  }
 
 
@@ -1131,7 +1137,7 @@ nav .navbar-toggler{
     width:100%;
     height:auto;
     border-radius:10px;
-    margin-bottom:5%;
+    margin-bottom:-15%;
     }
     
     #vidSmWrapper{
@@ -1407,8 +1413,13 @@ nav .navbar-toggler{
     display:none;
 }
 
+
+
     .imgItem{
-    display:none;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    margin-bottom:5%;
  }
 
 
@@ -1417,7 +1428,7 @@ nav .navbar-toggler{
     width:100%;
     height:auto;
     border-radius:10px;
-    margin-bottom:5%;
+    margin-bottom:-15%;
     
 
 }
@@ -1698,7 +1709,10 @@ nav .navbar-toggler{
 }
 
 .imgItem{
-    display:none;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    margin-bottom:5%;
  }
 
 
@@ -1707,7 +1721,7 @@ nav .navbar-toggler{
     width:100%;
     height:auto;
     border-radius:10px;
-    margin-bottom:5%;
+    margin-bottom:-15%;
     
 
 }
@@ -1789,7 +1803,10 @@ button {
 }
 
 .imgItem{
-    display:none;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    margin-bottom:5%;
  }
 
 
@@ -1798,7 +1815,7 @@ button {
     width:100%;
     height:auto;
     border-radius:10px;
-    margin-bottom:5%;
+    margin-bottom:-15%;
     
 
 }
