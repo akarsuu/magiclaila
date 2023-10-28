@@ -150,19 +150,19 @@
                             <form class="mainFilterFormSM" method="GET" action="{{ url_for('recipes') }}">
                                 
                                 <div id="firstGroupFilterSM">
-                                    <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if main_filter == 'aperitif' %}active{% endif %}" id="leftFirstFilterSm">Apéritif</a>
-                                    <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if main_filter == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilterSm">Petit-déjeuner</a>
-                                    <a href="{{ url_for('recipes', main_filter='entrée') }}" class="leftFilterSM {% if main_filter == 'entrée' %}active{% endif %}" id="leftThirdFilterSm">Entrée</a>
+                                    <a href="{{ url_for('recipes', main_filter='aperitif') }}" class="leftFilterSM {% if selected_meal == 'aperitif' %}active{% endif %}" id="leftFirstFilterSm">Apéritif</a>
+                                    <a href="{{ url_for('recipes', main_filter='petit-déjeuner') }}" class="leftFilterSM {% if selected_meal == 'petit-déjeuner' %}active{% endif %}" id="leftSecondFilterSm">Petit-déjeuner</a>
+                                    <a href="{{ url_for('recipes', main_filter='entrée') }}" class="leftFilterSM {% if selected_meal == 'entrée' %}active{% endif %}" id="leftThirdFilterSm">Entrée</a>
                                    
-                                    <a href="{{ url_for('recipes', main_filter='plat principal' |replace(' ', '%20')) }}" class="leftFilterSM {% if main_filter == 'plat principal' %}active{% endif %}" id="leftFourthFilterSm">Plat principal</a>
+                                    <a href="{{ url_for('recipes', main_filter='plat principal' |replace(' ', '%20')) }}" class="leftFilterSM {% if selected_meal == 'plat principal' %}active{% endif %}" id="leftFourthFilterSm">Plat principal</a>
                                     
                                     
                                 </div>
                                 <div id="secondGroupFilterSM">
-                                    <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if main_filter == 'légume' %}active{% endif %}" id="leftFifthFilterSm">Légume</a>
-                                    <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilterSM {% if main_filter == 'dessert' %}active{% endif %}" id="leftSixthFilterSm">Dessert</a>
-                                    <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilterSM {% if main_filter == 'fruit' %}active{% endif %}" id="leftSeventhFilterSm">Fruit</a>
-                                    <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilterSM {% if main_filter == 'boisson' %}active{% endif %}" id="leftEighthFilterSm">Boisson</a>
+                                    <a href="{{ url_for('recipes', main_filter='légume') }}" class="leftFilterSM {% if selected_meal == 'légume' %}active{% endif %}" id="leftFifthFilterSm">Légume</a>
+                                    <a href="{{ url_for('recipes', main_filter='dessert') }}" class="leftFilterSM {% if selected_meal == 'dessert' %}active{% endif %}" id="leftSixthFilterSm">Dessert</a>
+                                    <a href="{{ url_for('recipes', main_filter='fruit') }}" class="leftFilterSM {% if selected_meal == 'fruit' %}active{% endif %}" id="leftSeventhFilterSm">Fruit</a>
+                                    <a href="{{ url_for('recipes', main_filter='boisson') }}" class="leftFilterSM {% if selected_meal == 'boisson' %}active{% endif %}" id="leftEighthFilterSm">Boisson</a>
                                 </div>
                             </form>
                     </div>
@@ -234,7 +234,7 @@
         </div>
         
         <div id="signature">
-                <a href="https://portfolio.akarsuu.com" target="_blank">Design & Development akarsuu</a>
+                <a href="https://akarsuu.dev" target="_blank">Design & Development akarsuu</a>
         </div>
         
         <script>
