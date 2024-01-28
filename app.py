@@ -564,7 +564,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        if username == 'theMagictheLaila' and password == '345dkgb&':
+        if username == '' and password == '':
             session.permanent = True
             app.permanent_session_lifetime = timedelta(minutes=120)
             session['logged_in'] = True
